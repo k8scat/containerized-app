@@ -1,0 +1,13 @@
+private_db:
+  mysql_user: "root"
+  mysql_password: "root"
+  mysql_host: "124.70.186.187"
+  mysql_port: 3306
+  mysql_database: "privatedata"
+
+saas_db:
+  mysql_user: "root"
+  mysql_password: "root"
+  mysql_host: "124.70.186.187"
+  mysql_port: 3306
+  mysql_database: "ones"

@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  api:
+    build: ./api
+    image: ca-api:latest
+    container_name: ca-api
+
+  web:
+    build:
+      context: ./web
+      args:
+        REACT_APP_BASE_URL: https://example.com/api
+    image: ca-web:latest
+    container_name: ca-web
+    
+  gateway:
+    build: ./gateway
+    image: ca-gateway:latest
+    hostname: example.com
+    volumes:
+      - ./gateway/certs/fullchain.pem:/certs/cert.crt
+      - ./gateway/certs/privkey.pem:/certs/cert.key
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      - CORP_ID=
+      - AGENT_ID=
+      - SECRET=
+      - CALLBACK_HOST=example.com
+      - CALLBACK_SCHEMA=https
+      - CALLBACK_URI=/gateway/oauth_wechat
+      - LOGOUT_URI=/gateway/oauth_logout
+      - TOKEN_EXPIRES=7200
+      - USE_SECURE_COOKIE=true
+    container_name: ca-gateway

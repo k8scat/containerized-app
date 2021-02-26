@@ -1,0 +1,11 @@
+@import '~antd/dist/antd.css';
+
+.App {
+  text-align: center;
+}
+
+.center {
+  width: 600px;
+  margin: 0 auto;
+  display: none;
+}
